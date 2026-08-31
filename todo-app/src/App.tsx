@@ -337,7 +337,7 @@ function App() {
 
       <ul className="list">
         {visible.length === 0 ? (
-          <li className="empty">掲示されているクエストはありません</li>
+          <li className="empty">ToDoはありません。</li>
         ) : (
           visible.map((quest, indexInView) => {
             const due = dueMeta(quest.due)
