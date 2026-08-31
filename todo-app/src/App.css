@@ -1,0 +1,341 @@
+.app {
+  width: min(640px, 100%);
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 16px;
+  margin-bottom: 22px;
+  padding: 16px 18px;
+  background: var(--panel);
+  border: 2px solid #3a4a3d;
+  box-shadow: inset 0 0 0 1px #151c16;
+}
+
+.hud-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.hud h1 {
+  margin: 2px 0 0;
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--paper);
+}
+
+.rank {
+  text-align: right;
+}
+
+.rank-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #b7c4b4;
+}
+
+.rank-name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--gold);
+}
+
+.xp {
+  grid-column: 1 / -1;
+}
+
+.xp-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  color: #b7c4b4;
+}
+
+.xp-track {
+  height: 10px;
+  background: #151c16;
+  border: 1px solid #4a5c46;
+}
+
+.xp-fill {
+  height: 100%;
+  background: var(--gold);
+  width: var(--progress);
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr 148px auto;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.composer input,
+.composer button,
+.sub-form input,
+.sub-form button,
+.due-edit input,
+.title-edit {
+  height: 44px;
+}
+
+.composer input,
+.sub-form input,
+.due-edit input,
+.title-edit {
+  padding: 0 10px;
+  border: 2px solid #cbb992;
+  background: var(--paper);
+  color: var(--ink);
+  outline: none;
+}
+
+.composer input:focus,
+.sub-form input:focus,
+.due-edit input:focus,
+.title-edit:focus {
+  border-color: var(--gold-deep);
+}
+
+.composer button,
+.sub-form button {
+  padding: 0 14px;
+  border: 2px solid var(--gold-deep);
+  background: var(--gold);
+  color: #2a2118;
+  font-weight: 700;
+}
+
+.composer button:hover,
+.sub-form button:hover {
+  filter: brightness(1.08);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  color: #b7c4b4;
+}
+
+.filters {
+  display: flex;
+  gap: 4px;
+}
+
+.filters button,
+.clear,
+.abandon,
+.nudge {
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #b7c4b4;
+}
+
+.filters button.is-active {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.clear:hover,
+.abandon:hover {
+  color: #e8a39c;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--paper);
+  border: 3px solid #3a4a3d;
+  box-shadow: inset 0 0 0 1px #d8c9a6;
+  color: var(--ink);
+}
+
+.quest {
+  display: grid;
+  grid-template-columns: 28px 36px 1fr auto;
+  align-items: start;
+  gap: 8px;
+  padding: 14px 12px;
+  border-bottom: 1px dashed #cbb992;
+}
+
+.quest:last-child {
+  border-bottom: 0;
+}
+
+.quest.is-cleared .title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.quest.is-overdue {
+  background: #f4ddd4;
+}
+
+.quest.is-dragging {
+  opacity: 0.55;
+}
+
+.quest-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 4px;
+}
+
+.nudge {
+  height: 22px;
+  color: var(--muted);
+  cursor: grab;
+}
+
+.nudge:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.seal,
+.sub-seal {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #8a7a58;
+  background: #fff8ea;
+  color: var(--moss);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0;
+}
+
+.quest.is-cleared .seal,
+.subs .is-done .sub-seal {
+  border-color: var(--moss);
+  background: var(--moss);
+  color: #fff8ea;
+}
+
+.quest-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.quest-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.reward,
+.sub-xp {
+  color: var(--gold-deep);
+}
+
+.due-today {
+  color: #8a4b16;
+}
+
+.due-overdue {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.due-later,
+.sub-count {
+  color: var(--muted);
+}
+
+.title {
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: 1.02rem;
+}
+
+.due-edit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.due-edit input {
+  height: 32px;
+}
+
+.subs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.subs li {
+  display: grid;
+  grid-template-columns: 24px 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.subs .is-done span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.sub-seal {
+  width: 22px;
+  height: 22px;
+  font-size: 0.65rem;
+}
+
+.sub-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+}
+
+.sub-form input,
+.sub-form button {
+  height: 34px;
+}
+
+.empty {
+  padding: 40px 16px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (max-width: 640px) {
+  .composer {
+    grid-template-columns: 1fr;
+  }
+}

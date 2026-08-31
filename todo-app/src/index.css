@@ -1,0 +1,55 @@
+:root {
+  --bg: #1a241c;
+  --panel: #243028;
+  --paper: #efe6d2;
+  --ink: #2a2118;
+  --muted: #7a6f5e;
+  --gold: #c9a227;
+  --gold-deep: #9a7814;
+  --moss: #3f6b48;
+  --danger: #8d3b32;
+  --hud: #e8dcc4;
+  --sans: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  --serif: "Iowan Old Style", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--hud);
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.25), transparent 180px),
+    repeating-linear-gradient(
+      90deg,
+      #1a241c 0 12px,
+      #182218 12px 13px
+    );
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 80px;
+}
