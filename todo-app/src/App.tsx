@@ -23,7 +23,7 @@ type Stats = {
 
 const QUEST_KEY = 'todo-app.items'
 const STATS_KEY = 'todo-app.stats'
-const XP_PER_QUEST = 10
+const XP_PER_QUEST = 15
 const XP_PER_SUB = 4
 const XP_PER_LEVEL = 50
 const RANKS = ['見習い', '冒険者', '斥候', '騎士', '英雄', '伝説'] as const
