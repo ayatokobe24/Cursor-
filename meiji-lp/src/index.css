@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-navy: #0b4a7a;
+  --color-navy-deep: #07355a;
+  --color-sky: #2f8fd8;
+  --color-mist: #f0f7ff;
+  --color-ink: #16324d;
+  --color-muted: #5a738a;
+  --font-sans: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #fff;
+}

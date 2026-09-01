@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --surface-primary: #f4f4f5;
+  --surface-card: #ffffff;
+  --surface-inverse: #1a1a1a;
+  --foreground-primary: #1a1a1a;
+  --foreground-secondary: #666666;
+  --foreground-muted: #999999;
+  --foreground-inverse: #ffffff;
+  --border-subtle: #e5e5e5;
+  --accent-primary: #0066ff;
+  --input-fill: #fafafa;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  .font-heading {
+    font-family: var(--font-geist), "Geist", sans-serif;
+  }
+
+  .font-body {
+    font-family: var(--font-inter), "Inter", sans-serif;
+  }
+}

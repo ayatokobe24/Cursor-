@@ -1,0 +1,351 @@
+{
+  "version": "2.17",
+  "children": [
+    {
+      "type": "frame",
+      "id": "BeUlP",
+      "x": 0,
+      "y": 0,
+      "name": "Login",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$surface-primary",
+      "layout": "vertical",
+      "padding": 48,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "HDilN",
+          "name": "Login Card",
+          "width": 420,
+          "fill": "$surface-card",
+          "cornerRadius": "$radius-2xl",
+          "effect": [
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#00000008",
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "blur": 3
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#0000000a",
+              "offset": {
+                "x": 0,
+                "y": 4
+              },
+              "blur": 12
+            }
+          ],
+          "layout": "vertical",
+          "gap": 28,
+          "padding": 40,
+          "children": [
+            {
+              "type": "frame",
+              "id": "CmE0f",
+              "name": "Header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "s46xF",
+                  "name": "Mark Row",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "omTCX",
+                      "name": "Plus Mark",
+                      "fill": "$accent-primary",
+                      "content": "+",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "xS9Je",
+                      "name": "Eyebrow",
+                      "fill": "$foreground-muted",
+                      "content": "ACCOUNT",
+                      "fontFamily": "$font-body",
+                      "fontSize": 11,
+                      "fontWeight": "500",
+                      "letterSpacing": 1.6
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "n01a8",
+                  "name": "Title",
+                  "fill": "$foreground-primary",
+                  "content": "ログイン",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 32,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "xCwgn",
+                  "name": "Subtitle",
+                  "fill": "$foreground-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "メールアドレスとパスワードを入力してください",
+                  "lineHeight": 1.5,
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "g1HrTT",
+              "name": "Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "LzYzx",
+                  "name": "Email Field",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yxmC7",
+                      "name": "Email Label",
+                      "fill": "$foreground-primary",
+                      "content": "メールアドレス",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Isofb",
+                      "name": "Email Input",
+                      "width": "fill_container",
+                      "height": 48,
+                      "fill": "$input-fill",
+                      "cornerRadius": "$radius-xl",
+                      "stroke": "$border-subtle",
+                      "strokeWidth": 1,
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "d29dx",
+                          "name": "Mail Icon",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "mail",
+                          "library": "lucide",
+                          "fill": "$foreground-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "uGVi4",
+                          "name": "Email Placeholder",
+                          "fill": "$foreground-muted",
+                          "content": "you@example.com",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lTSZy",
+                  "name": "Password Field",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YGewd",
+                      "name": "Password Label",
+                      "fill": "$foreground-primary",
+                      "content": "パスワード",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vAgKK",
+                      "name": "Password Input",
+                      "width": "fill_container",
+                      "height": 48,
+                      "fill": "$input-fill",
+                      "cornerRadius": "$radius-xl",
+                      "stroke": "$border-subtle",
+                      "strokeWidth": 1,
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "R0HhH3",
+                          "name": "Lock Icon",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "lock",
+                          "library": "lucide",
+                          "fill": "$foreground-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "tAYNp",
+                          "name": "Password Placeholder",
+                          "fill": "$foreground-muted",
+                          "content": "●●●●●●●●",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "P7sjC",
+              "name": "Actions",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "BaM8Z",
+                  "name": "Login Button",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$surface-inverse",
+                  "cornerRadius": "$radius-xl",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "G9YALu",
+                      "name": "Login Label",
+                      "fill": "$foreground-inverse",
+                      "content": "ログイン",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "FL8MK",
+                  "name": "Forgot Password",
+                  "fill": "$accent-primary",
+                  "content": "パスワードを忘れた方",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "surface-primary": {
+      "type": "color",
+      "value": "#F4F4F5"
+    },
+    "surface-card": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "surface-inverse": {
+      "type": "color",
+      "value": "#1A1A1A"
+    },
+    "foreground-primary": {
+      "type": "color",
+      "value": "#1A1A1A"
+    },
+    "foreground-secondary": {
+      "type": "color",
+      "value": "#666666"
+    },
+    "foreground-muted": {
+      "type": "color",
+      "value": "#999999"
+    },
+    "foreground-inverse": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "border-subtle": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "accent-primary": {
+      "type": "color",
+      "value": "#0066FF"
+    },
+    "input-fill": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "font-heading": {
+      "type": "string",
+      "value": "Geist"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "radius-xl": {
+      "type": "number",
+      "value": 12
+    },
+    "radius-2xl": {
+      "type": "number",
+      "value": 16
+    }
+  },
+  "fileToken": "5da93e2b-3430-41f6-a177-2435778a8280"
+}
