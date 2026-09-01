@@ -1,17 +1,14 @@
-"use client";
-
-import { FormEvent } from "react";
 import { Lock, Mail } from "lucide-react";
 
-export default function LoginPage() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-  }
+async function loginAction() {
+  "use server";
+}
 
+export default function LoginPage() {
   return (
     <main className="flex h-full w-full items-center justify-center bg-[var(--surface-primary)] p-12">
       <form
-        onSubmit={handleSubmit}
+        action={loginAction}
         className="flex w-[420px] flex-col gap-[28px] rounded-[var(--radius-2xl)] bg-[var(--surface-card)] p-10 shadow-[0_1px_3px_#00000008,0_4px_12px_#0000000a]"
       >
         <header className="flex w-full flex-col gap-[10px]">
@@ -66,7 +63,7 @@ export default function LoginPage() {
                 type="password"
                 name="password"
                 autoComplete="current-password"
-                placeholder="••••••••"
+                placeholder="●●●●●●●●"
                 className="h-full w-full bg-transparent font-body text-[14px] font-normal text-[var(--foreground-primary)] outline-none placeholder:text-[var(--foreground-muted)]"
               />
             </span>
@@ -81,7 +78,7 @@ export default function LoginPage() {
             ログイン
           </button>
           <a
-            href="#"
+            href="#forgot-password"
             className="font-body text-[13px] font-normal text-[var(--accent-primary)] underline"
           >
             パスワードを忘れた方
