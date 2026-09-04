@@ -11,11 +11,12 @@ node_modules
 dist
 dist-ssr
 *.local
-
-# Environment
 .env
 .env.*
 !.env.example
+
+# Supabase CLI local cache
+supabase/.temp
 
 # Editor directories and files
 .vscode/*
