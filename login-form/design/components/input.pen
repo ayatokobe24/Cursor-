@@ -1,0 +1,702 @@
+{
+  "version": "2.17",
+  "variables": {
+    "input-bg": { "type": "color", "value": "#FFFFFF" },
+    "input-border": { "type": "color", "value": "#D1D5DB" },
+    "input-focus": { "type": "color", "value": "#3B82F6" },
+    "input-error": { "type": "color", "value": "#EF4444" },
+    "input-label": { "type": "color", "value": "#374151" },
+    "input-placeholder": { "type": "color", "value": "#9CA3AF" },
+    "input-text": { "type": "color", "value": "#111827" },
+    "input-icon": { "type": "color", "value": "#6B7280" },
+    "canvas": { "type": "color", "value": "#FAFAFA" },
+    "font": { "type": "string", "value": "Inter" },
+    "input-radius": { "type": "number", "value": 6 }
+  },
+  "children": [
+    {
+      "type": "frame",
+      "id": "input-root",
+      "name": "Input",
+      "reusable": true,
+      "x": 0,
+      "y": 0,
+      "layout": "horizontal",
+      "width": 320,
+      "height": 40,
+      "gap": 8,
+      "padding": [0, 12],
+      "alignItems": "center",
+      "fill": "$input-bg",
+      "stroke": "$input-border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "cornerRadius": "$input-radius",
+      "clip": true,
+      "children": [
+        {
+          "type": "icon",
+          "id": "input-icon-left",
+          "name": "Left Icon",
+          "library": "lucide",
+          "icon": "mail",
+          "width": 16,
+          "height": 16,
+          "fill": "$input-icon",
+          "enabled": false
+        },
+        {
+          "type": "text",
+          "id": "input-value",
+          "name": "Value",
+          "content": "Placeholder",
+          "fontFamily": "$font",
+          "fontSize": 16,
+          "fill": "$input-placeholder"
+        },
+        {
+          "type": "icon",
+          "id": "input-icon-right",
+          "name": "Right Icon",
+          "library": "lucide",
+          "icon": "eye",
+          "width": 16,
+          "height": 16,
+          "fill": "$input-icon",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "input-focus",
+      "name": "Input/Focus",
+      "reusable": true,
+      "x": 360,
+      "y": 0,
+      "layout": "horizontal",
+      "width": 320,
+      "height": 40,
+      "gap": 8,
+      "padding": [0, 12],
+      "alignItems": "center",
+      "fill": "$input-bg",
+      "stroke": "$input-focus",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "cornerRadius": "$input-radius",
+      "clip": true,
+      "effect": [
+        {
+          "type": "shadow",
+          "shadowType": "outer",
+          "color": "#3B82F633",
+          "offset": { "x": 0, "y": 0 },
+          "blur": 0,
+          "spread": 3
+        }
+      ],
+      "children": [
+        {
+          "type": "icon",
+          "id": "input-focus-icon-left",
+          "name": "Left Icon",
+          "library": "lucide",
+          "icon": "mail",
+          "width": 16,
+          "height": 16,
+          "fill": "$input-icon",
+          "enabled": false
+        },
+        {
+          "type": "text",
+          "id": "input-focus-value",
+          "name": "Value",
+          "content": "Focused value",
+          "fontFamily": "$font",
+          "fontSize": 16,
+          "fill": "$input-text"
+        },
+        {
+          "type": "icon",
+          "id": "input-focus-icon-right",
+          "name": "Right Icon",
+          "library": "lucide",
+          "icon": "eye",
+          "width": 16,
+          "height": 16,
+          "fill": "$input-icon",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "input-with-label",
+      "name": "Input/With Label",
+      "reusable": true,
+      "x": 0,
+      "y": 80,
+      "layout": "vertical",
+      "width": 320,
+      "gap": 6,
+      "children": [
+        {
+          "type": "frame",
+          "id": "input-label-row",
+          "name": "Label Row",
+          "layout": "horizontal",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "input-label-text",
+              "name": "Label",
+              "content": "Email",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fontWeight": "500",
+              "fill": "$input-label"
+            },
+            {
+              "type": "text",
+              "id": "input-required",
+              "name": "Required",
+              "content": "*",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fontWeight": "600",
+              "fill": "$input-error"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "input-labeled-field",
+          "name": "Field",
+          "layout": "horizontal",
+          "width": "fill_container",
+          "height": 40,
+          "gap": 8,
+          "padding": [0, 12],
+          "alignItems": "center",
+          "fill": "$input-bg",
+          "stroke": "$input-border",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "cornerRadius": "$input-radius",
+          "children": [
+            {
+              "type": "text",
+              "id": "input-labeled-value",
+              "name": "Value",
+              "content": "you@example.com",
+              "fontFamily": "$font",
+              "fontSize": 16,
+              "fill": "$input-placeholder"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "input-error",
+      "name": "Input/Error",
+      "reusable": true,
+      "x": 360,
+      "y": 80,
+      "layout": "vertical",
+      "width": 320,
+      "gap": 6,
+      "children": [
+        {
+          "type": "frame",
+          "id": "input-error-label-row",
+          "name": "Label Row",
+          "layout": "horizontal",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "input-error-label",
+              "name": "Label",
+              "content": "Email",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fontWeight": "500",
+              "fill": "$input-label"
+            },
+            {
+              "type": "text",
+              "id": "input-error-required",
+              "name": "Required",
+              "content": "*",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fontWeight": "600",
+              "fill": "$input-error"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "input-error-field",
+          "name": "Field",
+          "layout": "horizontal",
+          "width": "fill_container",
+          "height": 40,
+          "gap": 8,
+          "padding": [0, 12],
+          "alignItems": "center",
+          "fill": "$input-bg",
+          "stroke": "$input-error",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "cornerRadius": "$input-radius",
+          "children": [
+            {
+              "type": "text",
+              "id": "input-error-value",
+              "name": "Value",
+              "content": "invalid-email",
+              "fontFamily": "$font",
+              "fontSize": 16,
+              "fill": "$input-text"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "input-error-message",
+          "name": "Error Message",
+          "content": "Please enter a valid email address.",
+          "fontFamily": "$font",
+          "fontSize": 14,
+          "fill": "$input-error",
+          "textGrowth": "fixed-width",
+          "width": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "input-with-icons",
+      "name": "Input/With Icons",
+      "reusable": true,
+      "x": 720,
+      "y": 80,
+      "layout": "horizontal",
+      "width": 320,
+      "height": 40,
+      "gap": 8,
+      "padding": [0, 12],
+      "alignItems": "center",
+      "fill": "$input-bg",
+      "stroke": "$input-border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "cornerRadius": "$input-radius",
+      "clip": true,
+      "children": [
+        {
+          "type": "icon",
+          "id": "input-icons-left",
+          "name": "Left Icon",
+          "library": "lucide",
+          "icon": "search",
+          "width": 16,
+          "height": 16,
+          "fill": "$input-icon"
+        },
+        {
+          "type": "text",
+          "id": "input-icons-value",
+          "name": "Value",
+          "content": "Search…",
+          "fontFamily": "$font",
+          "fontSize": 16,
+          "fill": "$input-placeholder"
+        },
+        {
+          "type": "icon",
+          "id": "input-icons-right",
+          "name": "Right Icon",
+          "library": "lucide",
+          "icon": "x",
+          "width": 16,
+          "height": 16,
+          "fill": "$input-icon"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "input-sm",
+      "name": "Input/Sm",
+      "reusable": true,
+      "x": 0,
+      "y": 220,
+      "layout": "horizontal",
+      "width": 320,
+      "height": 32,
+      "gap": 8,
+      "padding": [0, 12],
+      "alignItems": "center",
+      "fill": "$input-bg",
+      "stroke": "$input-border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "cornerRadius": "$input-radius",
+      "clip": true,
+      "children": [
+        {
+          "type": "text",
+          "id": "input-sm-value",
+          "name": "Value",
+          "content": "Small input",
+          "fontFamily": "$font",
+          "fontSize": 14,
+          "fill": "$input-placeholder"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "input-lg",
+      "name": "Input/Lg",
+      "reusable": true,
+      "x": 360,
+      "y": 220,
+      "layout": "horizontal",
+      "width": 320,
+      "height": 48,
+      "gap": 8,
+      "padding": [0, 12],
+      "alignItems": "center",
+      "fill": "$input-bg",
+      "stroke": "$input-border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "cornerRadius": "$input-radius",
+      "clip": true,
+      "children": [
+        {
+          "type": "text",
+          "id": "input-lg-value",
+          "name": "Value",
+          "content": "Large input",
+          "fontFamily": "$font",
+          "fontSize": 18,
+          "fill": "$input-placeholder"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "input-gallery",
+      "name": "Input Gallery",
+      "x": 0,
+      "y": 320,
+      "width": 1120,
+      "layout": "vertical",
+      "gap": 32,
+      "padding": 48,
+      "fill": "$canvas",
+      "clip": true,
+      "children": [
+        {
+          "type": "frame",
+          "id": "input-gallery-header",
+          "name": "Header",
+          "layout": "vertical",
+          "width": "fill_container",
+          "gap": 8,
+          "children": [
+            {
+              "type": "text",
+              "id": "input-gallery-title",
+              "name": "Title",
+              "content": "Input",
+              "fontFamily": "$font",
+              "fontSize": 30,
+              "fontWeight": "700",
+              "fill": "$input-text"
+            },
+            {
+              "type": "text",
+              "id": "input-gallery-sub",
+              "name": "Subtitle",
+              "content": "高さ 40px（md）· padding 0 12px · 枠線 1px #D1D5DB · 角丸 6px · フォーカス時は青枠 + リングシャドウ",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fill": "$input-icon",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "input-gallery-basic",
+          "name": "Basic",
+          "layout": "vertical",
+          "width": "fill_container",
+          "gap": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "input-gallery-basic-label",
+              "name": "Section",
+              "content": "Default / Focus",
+              "fontFamily": "$font",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "fill": "$input-text"
+            },
+            {
+              "type": "frame",
+              "id": "input-gallery-basic-row",
+              "name": "Row",
+              "layout": "horizontal",
+              "gap": 24,
+              "alignItems": "start",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "input-gallery-default-col",
+                  "name": "Default Col",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "input-gallery-default-cap",
+                      "name": "Caption",
+                      "content": "default",
+                      "fontFamily": "$font",
+                      "fontSize": 12,
+                      "fill": "$input-icon"
+                    },
+                    {
+                      "type": "ref",
+                      "id": "input-gallery-default",
+                      "ref": "input-root",
+                      "name": "Default",
+                      "width": 320
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "input-gallery-focus-col",
+                  "name": "Focus Col",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "input-gallery-focus-cap",
+                      "name": "Caption",
+                      "content": "focus",
+                      "fontFamily": "$font",
+                      "fontSize": 12,
+                      "fill": "$input-icon"
+                    },
+                    {
+                      "type": "ref",
+                      "id": "input-gallery-focus",
+                      "ref": "input-focus",
+                      "name": "Focus",
+                      "width": 320
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "input-gallery-labeled",
+          "name": "Labeled",
+          "layout": "vertical",
+          "width": "fill_container",
+          "gap": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "input-gallery-labeled-label",
+              "name": "Section",
+              "content": "Label / Error / Icons",
+              "fontFamily": "$font",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "fill": "$input-text"
+            },
+            {
+              "type": "frame",
+              "id": "input-gallery-labeled-row",
+              "name": "Row",
+              "layout": "horizontal",
+              "gap": 24,
+              "alignItems": "start",
+              "children": [
+                {
+                  "type": "ref",
+                  "id": "input-gallery-with-label",
+                  "ref": "input-with-label",
+                  "name": "With Label",
+                  "width": 320
+                },
+                {
+                  "type": "ref",
+                  "id": "input-gallery-error",
+                  "ref": "input-error",
+                  "name": "Error",
+                  "width": 320
+                },
+                {
+                  "type": "frame",
+                  "id": "input-gallery-icons-col",
+                  "name": "Icons Col",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "input-gallery-icons-cap",
+                      "name": "Caption",
+                      "content": "left + right icons",
+                      "fontFamily": "$font",
+                      "fontSize": 12,
+                      "fill": "$input-icon"
+                    },
+                    {
+                      "type": "ref",
+                      "id": "input-gallery-icons",
+                      "ref": "input-with-icons",
+                      "name": "With Icons",
+                      "width": 320
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "input-gallery-sizes",
+          "name": "Sizes",
+          "layout": "vertical",
+          "width": "fill_container",
+          "gap": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "input-gallery-sizes-label",
+              "name": "Section",
+              "content": "Size",
+              "fontFamily": "$font",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "fill": "$input-text"
+            },
+            {
+              "type": "frame",
+              "id": "input-gallery-sizes-row",
+              "name": "Row",
+              "layout": "horizontal",
+              "gap": 24,
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "input-gallery-sm-col",
+                  "name": "Sm Col",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "input-gallery-sm-cap",
+                      "name": "Caption",
+                      "content": "sm · 32px / 14px",
+                      "fontFamily": "$font",
+                      "fontSize": 12,
+                      "fill": "$input-icon"
+                    },
+                    {
+                      "type": "ref",
+                      "id": "input-gallery-sm",
+                      "ref": "input-sm",
+                      "name": "Sm",
+                      "width": 280
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "input-gallery-md-col",
+                  "name": "Md Col",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "input-gallery-md-cap",
+                      "name": "Caption",
+                      "content": "md · 40px / 16px",
+                      "fontFamily": "$font",
+                      "fontSize": 12,
+                      "fill": "$input-icon"
+                    },
+                    {
+                      "type": "ref",
+                      "id": "input-gallery-md",
+                      "ref": "input-root",
+                      "name": "Md",
+                      "width": 280,
+                      "descendants": {
+                        "input-value": { "content": "Medium input" }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "input-gallery-lg-col",
+                  "name": "Lg Col",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "input-gallery-lg-cap",
+                      "name": "Caption",
+                      "content": "lg · 48px / 18px",
+                      "fontFamily": "$font",
+                      "fontSize": 12,
+                      "fill": "$input-icon"
+                    },
+                    {
+                      "type": "ref",
+                      "id": "input-gallery-lg",
+                      "ref": "input-lg",
+                      "name": "Lg",
+                      "width": 280
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fileToken": "b91f3e28-4c7a-4d6e-9a12-0e5f8c3d7b64"
+}

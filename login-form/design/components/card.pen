@@ -1,0 +1,566 @@
+{
+  "version": "2.17",
+  "variables": {
+    "card-bg": { "type": "color", "value": "#FFFFFF" },
+    "card-border": { "type": "color", "value": "#E5E7EB" },
+    "card-foreground": { "type": "color", "value": "#111827" },
+    "card-muted": { "type": "color", "value": "#6B7280" },
+    "card-image": { "type": "color", "value": "#F3F4F6" },
+    "canvas": { "type": "color", "value": "#FAFAFA" },
+    "primary": { "type": "color", "value": "#3B82F6" },
+    "font": { "type": "string", "value": "Inter" },
+    "card-radius": { "type": "number", "value": 8 }
+  },
+  "children": [
+    {
+      "type": "frame",
+      "id": "card-title",
+      "name": "Card/Title",
+      "reusable": true,
+      "x": 0,
+      "y": 0,
+      "layout": "vertical",
+      "width": 320,
+      "children": [
+        {
+          "type": "text",
+          "id": "card-title-text",
+          "name": "Title",
+          "content": "Card title",
+          "fontFamily": "$font",
+          "fontSize": 18,
+          "fontWeight": "600",
+          "fill": "$card-foreground",
+          "textGrowth": "fixed-width",
+          "width": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "card-description",
+      "name": "Card/Description",
+      "reusable": true,
+      "x": 360,
+      "y": 0,
+      "layout": "vertical",
+      "width": 320,
+      "children": [
+        {
+          "type": "text",
+          "id": "card-description-text",
+          "name": "Description",
+          "content": "Card description",
+          "fontFamily": "$font",
+          "fontSize": 14,
+          "fontWeight": "normal",
+          "fill": "$card-muted",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "lineHeight": 1.4
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "card-header",
+      "name": "Card/Header",
+      "reusable": true,
+      "x": 0,
+      "y": 80,
+      "layout": "vertical",
+      "width": 360,
+      "gap": 6,
+      "padding": [16, 20],
+      "stroke": "$card-border",
+      "strokeWidth": { "bottom": 1 },
+      "strokeAlignment": "inner",
+      "children": [
+        {
+          "type": "text",
+          "id": "card-header-title",
+          "name": "CardTitle",
+          "content": "Card title",
+          "fontFamily": "$font",
+          "fontSize": 18,
+          "fontWeight": "600",
+          "fill": "$card-foreground",
+          "textGrowth": "fixed-width",
+          "width": "fill_container"
+        },
+        {
+          "type": "text",
+          "id": "card-header-description",
+          "name": "CardDescription",
+          "content": "Card description",
+          "fontFamily": "$font",
+          "fontSize": 14,
+          "fill": "$card-muted",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "lineHeight": 1.4
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "card-content",
+      "name": "Card/Content",
+      "reusable": true,
+      "x": 400,
+      "y": 80,
+      "layout": "vertical",
+      "width": 360,
+      "padding": 20,
+      "gap": 8,
+      "slot": [],
+      "children": [
+        {
+          "type": "text",
+          "id": "card-content-body",
+          "name": "Body",
+          "content": "Card content goes here.",
+          "fontFamily": "$font",
+          "fontSize": 14,
+          "fill": "$card-foreground",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "lineHeight": 1.5
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "card-footer",
+      "name": "Card/Footer",
+      "reusable": true,
+      "x": 800,
+      "y": 80,
+      "layout": "horizontal",
+      "width": 360,
+      "gap": 12,
+      "padding": [16, 20],
+      "justifyContent": "end",
+      "alignItems": "center",
+      "stroke": "$card-border",
+      "strokeWidth": { "top": 1 },
+      "strokeAlignment": "inner",
+      "slot": [],
+      "children": [
+        {
+          "type": "text",
+          "id": "card-footer-secondary",
+          "name": "Secondary Action",
+          "content": "Cancel",
+          "fontFamily": "$font",
+          "fontSize": 14,
+          "fontWeight": "500",
+          "fill": "$card-muted"
+        },
+        {
+          "type": "text",
+          "id": "card-footer-primary",
+          "name": "Primary Action",
+          "content": "Save",
+          "fontFamily": "$font",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "fill": "$primary"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "card-root",
+      "name": "Card",
+      "reusable": true,
+      "x": 0,
+      "y": 260,
+      "layout": "vertical",
+      "width": 360,
+      "clip": true,
+      "fill": "$card-bg",
+      "stroke": "$card-border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "cornerRadius": "$card-radius",
+      "effect": [
+        {
+          "type": "shadow",
+          "shadowType": "outer",
+          "color": "#0000001A",
+          "offset": { "x": 0, "y": 1 },
+          "blur": 3
+        }
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "card-root-header",
+          "name": "CardHeader",
+          "layout": "vertical",
+          "width": "fill_container",
+          "gap": 6,
+          "padding": [16, 20],
+          "stroke": "$card-border",
+          "strokeWidth": { "bottom": 1 },
+          "strokeAlignment": "inner",
+          "children": [
+            {
+              "type": "text",
+              "id": "card-root-title",
+              "name": "CardTitle",
+              "content": "Card title",
+              "fontFamily": "$font",
+              "fontSize": 18,
+              "fontWeight": "600",
+              "fill": "$card-foreground",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            },
+            {
+              "type": "text",
+              "id": "card-root-description",
+              "name": "CardDescription",
+              "content": "Card description",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fill": "$card-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "lineHeight": 1.4
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "card-root-content",
+          "name": "CardContent",
+          "layout": "vertical",
+          "width": "fill_container",
+          "padding": 20,
+          "slot": [],
+          "children": [
+            {
+              "type": "text",
+              "id": "card-root-body",
+              "name": "Body",
+              "content": "Card content goes here.",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fill": "$card-foreground",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "lineHeight": 1.5
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "card-root-footer",
+          "name": "CardFooter",
+          "layout": "horizontal",
+          "width": "fill_container",
+          "gap": 12,
+          "padding": [16, 20],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "stroke": "$card-border",
+          "strokeWidth": { "top": 1 },
+          "strokeAlignment": "inner",
+          "slot": [],
+          "children": [
+            {
+              "type": "text",
+              "id": "card-root-cancel",
+              "name": "Secondary Action",
+              "content": "Cancel",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fontWeight": "500",
+              "fill": "$card-muted"
+            },
+            {
+              "type": "text",
+              "id": "card-root-save",
+              "name": "Primary Action",
+              "content": "Save",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fontWeight": "600",
+              "fill": "$primary"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "card-with-image",
+      "name": "Card/With Image",
+      "reusable": true,
+      "x": 400,
+      "y": 260,
+      "layout": "vertical",
+      "width": 360,
+      "clip": true,
+      "fill": "$card-bg",
+      "stroke": "$card-border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "cornerRadius": "$card-radius",
+      "effect": [
+        {
+          "type": "shadow",
+          "shadowType": "outer",
+          "color": "#0000001A",
+          "offset": { "x": 0, "y": 1 },
+          "blur": 3
+        }
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "card-media",
+          "name": "CardImage",
+          "width": "fill_container",
+          "height": 180,
+          "fill": "$card-image",
+          "clip": true,
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "card-media-icon",
+              "name": "Image Icon",
+              "library": "lucide",
+              "icon": "image",
+              "width": 32,
+              "height": 32,
+              "fill": "$card-muted"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "card-image-header",
+          "name": "CardHeader",
+          "layout": "vertical",
+          "width": "fill_container",
+          "gap": 6,
+          "padding": [16, 20],
+          "stroke": "$card-border",
+          "strokeWidth": { "bottom": 1 },
+          "strokeAlignment": "inner",
+          "children": [
+            {
+              "type": "text",
+              "id": "card-image-title",
+              "name": "CardTitle",
+              "content": "Card title",
+              "fontFamily": "$font",
+              "fontSize": 18,
+              "fontWeight": "600",
+              "fill": "$card-foreground",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            },
+            {
+              "type": "text",
+              "id": "card-image-description",
+              "name": "CardDescription",
+              "content": "Card description",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fill": "$card-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "lineHeight": 1.4
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "card-image-content",
+          "name": "CardContent",
+          "layout": "vertical",
+          "width": "fill_container",
+          "padding": 20,
+          "slot": [],
+          "children": [
+            {
+              "type": "text",
+              "id": "card-image-body",
+              "name": "Body",
+              "content": "Card content goes here.",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fill": "$card-foreground",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "lineHeight": 1.5
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "card-image-footer",
+          "name": "CardFooter",
+          "layout": "horizontal",
+          "width": "fill_container",
+          "gap": 12,
+          "padding": [16, 20],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "stroke": "$card-border",
+          "strokeWidth": { "top": 1 },
+          "strokeAlignment": "inner",
+          "slot": [],
+          "children": [
+            {
+              "type": "text",
+              "id": "card-image-cancel",
+              "name": "Secondary Action",
+              "content": "Cancel",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fontWeight": "500",
+              "fill": "$card-muted"
+            },
+            {
+              "type": "text",
+              "id": "card-image-save",
+              "name": "Primary Action",
+              "content": "Save",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fontWeight": "600",
+              "fill": "$primary"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "card-gallery",
+      "name": "Card Gallery",
+      "x": 0,
+      "y": 820,
+      "width": 960,
+      "layout": "vertical",
+      "gap": 32,
+      "padding": 48,
+      "fill": "$canvas",
+      "clip": true,
+      "children": [
+        {
+          "type": "frame",
+          "id": "card-gallery-header",
+          "name": "Header",
+          "layout": "vertical",
+          "width": "fill_container",
+          "gap": 8,
+          "children": [
+            {
+              "type": "text",
+              "id": "card-gallery-title",
+              "name": "Title",
+              "content": "Card",
+              "fontFamily": "$font",
+              "fontSize": 30,
+              "fontWeight": "700",
+              "fill": "$card-foreground"
+            },
+            {
+              "type": "text",
+              "id": "card-gallery-sub",
+              "name": "Subtitle",
+              "content": "Shadcn UI ベース · 白背景 · 枠線 #E5E7EB · 角丸 8px · shadow 0 1px 3px rgba(0,0,0,0.1)",
+              "fontFamily": "$font",
+              "fontSize": 14,
+              "fill": "$card-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "card-gallery-row",
+          "name": "Variants",
+          "layout": "horizontal",
+          "gap": 32,
+          "alignItems": "start",
+          "children": [
+            {
+              "type": "frame",
+              "id": "card-gallery-plain-col",
+              "name": "Without Image",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "card-gallery-plain-label",
+                  "name": "Label",
+                  "content": "画像なし",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "500",
+                  "fill": "$card-muted"
+                },
+                {
+                  "type": "ref",
+                  "id": "card-gallery-plain",
+                  "ref": "card-root",
+                  "name": "Card Default",
+                  "width": 360,
+                  "descendants": {
+                    "card-root-title": { "content": "プロジェクト概要" },
+                    "card-root-description": { "content": "チームの進捗と次のアクションを確認します。" },
+                    "card-root-body": { "content": "今週はデザインシステムの構築とログイン画面の実装を進めました。" }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "card-gallery-image-col",
+              "name": "With Image",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "card-gallery-image-label",
+                  "name": "Label",
+                  "content": "画像あり",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "500",
+                  "fill": "$card-muted"
+                },
+                {
+                  "type": "ref",
+                  "id": "card-gallery-image",
+                  "ref": "card-with-image",
+                  "name": "Card With Image",
+                  "width": 360,
+                  "descendants": {
+                    "card-image-title": { "content": "カバー付きカード" },
+                    "card-image-description": { "content": "上部に画像を配置したバリエーションです。" },
+                    "card-image-body": { "content": "記事・商品・プロフィールなど、ビジュアルが主役のコンテンツ向けです。" }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fileToken": "e2a91c47-6b0d-4f38-a5c8-1d7e9b4f8023"
+}
