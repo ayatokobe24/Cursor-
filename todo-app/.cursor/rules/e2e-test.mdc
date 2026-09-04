@@ -1,0 +1,34 @@
+---
+description: E2Eテスト実行時のルール
+globs:
+alwaysApply: true
+---
+
+# E2Eテスト実行ルール
+
+## スクリーンショットの保存先
+
+エラー時の PNG は Cursor の Temp に残さない。必ずワークスペースへコピーし、報告ではその相対パスを使う。
+
+- 保存ディレクトリ: `docs/e2e/screenshots/`
+- ファイル名: `error-{テストケースID}-{timestamp}.png`
+- 手順:
+  1. `browser_take_screenshot` で撮影する（filename は上記のファイル名）
+  2. ツールが返す `Saved to:` の一時ファイルを、`docs/e2e/screenshots/` へコピーする
+  3. 結果報告では `docs/e2e/screenshots/error-....png` を案内する（Temp パスは案内しない）
+
+## E2Eテスト時のエラー対応
+
+ブラウザを使用したE2Eテスト中にエラーが発生した場合、以下の情報を自動的に収集すること：
+
+1. **スクリーンショットの撮影**
+   - 上記の保存先ルールに従う
+
+2. **コンソールログの取得**
+   - `browser_console_messages`を使用してJavaScriptエラーを確認
+
+3. **ネットワークリクエストの確認**
+   - `browser_network_requests`を使用してAPIエラー（4xx, 5xx）を確認
+
+4. **ページ状態の取得**
+   - `browser_snapshot`を使用してDOM状態を記録
