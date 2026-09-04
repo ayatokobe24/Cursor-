@@ -1,0 +1,17 @@
+# Dependencies
+node_modules
+
+# Environment (keep the template)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
