@@ -1,0 +1,231 @@
+.glassCard {
+  background-color: var(--color-surface-glass);
+  background-image: var(--gradient-surface);
+  border: var(--border-width-default) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-card-soft), var(--shadow-inset-highlight);
+  backdrop-filter: blur(var(--blur-glass));
+  color: var(--color-text-primary);
+}
+
+.glassCardLarge {
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.glassCardSelected {
+  border-color: var(--color-accent);
+  background-image: var(--gradient-surface-accent);
+  box-shadow:
+    var(--shadow-card-soft),
+    var(--shadow-inset-highlight),
+    var(--shadow-glow-accent);
+}
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--control-height-lg);
+  min-height: var(--control-height-lg);
+  padding: 0 var(--space-6);
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--color-cta);
+  color: var(--color-cta-text);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  box-shadow: var(--shadow-card-soft);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--easing-standard),
+    box-shadow var(--duration-fast) var(--easing-standard);
+}
+
+.primaryButton:hover:not(:disabled) {
+  background-color: var(--color-cta-hover);
+}
+
+.primaryButton:active:not(:disabled) {
+  background-color: var(--color-cta-active);
+}
+
+.primaryButton:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.primaryButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+  box-shadow: var(--shadow-none);
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--control-height-md);
+  padding: 0 var(--space-5);
+  border: var(--border-width-default) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-glass);
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  box-shadow: var(--shadow-none);
+  backdrop-filter: blur(var(--blur-glass));
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--easing-standard),
+    border-color var(--duration-fast) var(--easing-standard);
+}
+
+.secondaryButton:hover:not(:disabled) {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-border-strong);
+}
+
+.secondaryButton:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.secondaryButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.fieldLabel {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.fieldControl {
+  width: 100%;
+  min-height: var(--control-height-md);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width-default) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-glass-strong);
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  box-shadow: var(--shadow-inset-highlight);
+  backdrop-filter: blur(var(--blur-glass-strong));
+  transition:
+    border-color var(--duration-fast) var(--easing-standard),
+    box-shadow var(--duration-fast) var(--easing-standard);
+}
+
+.fieldControl::placeholder {
+  color: var(--color-text-muted);
+}
+
+.fieldControl:hover:not(:disabled) {
+  border-color: var(--color-border-strong);
+}
+
+.fieldControl:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-color: var(--color-accent);
+}
+
+.fieldControl:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.textarea {
+  min-height: calc(var(--control-height-md) * 3);
+  resize: vertical;
+}
+
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.composerRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.composerInput {
+  flex: 1;
+}
+
+.composerSend {
+  flex: none;
+  width: var(--control-height-sm);
+  height: var(--control-height-sm);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-sage);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-none);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--duration-fast) var(--easing-standard);
+}
+
+.composerSend:hover:not(:disabled) {
+  background-color: var(--color-accent-text);
+}
+
+.composerSend:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.composerSend:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.composerSendIcon {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+
+.inlineMessage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width-default) solid var(--color-danger);
+  border-radius: var(--radius-md);
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-body);
+}
+
+.inlineMessageBody {
+  flex: 1 1 12rem;
+}
+
+.inlineMessageRetry {
+  flex: none;
+}
