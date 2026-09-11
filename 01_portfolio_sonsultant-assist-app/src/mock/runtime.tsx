@@ -52,6 +52,8 @@ export function useMockRuntime(): MockRuntime {
       signIn: store.signIn,
       completeConsent: store.completeConsent,
       startConsult: store.startConsult,
+      appendUserMessage: store.appendUserMessage,
+      beginOpeningTurn: store.beginOpeningTurn,
       advanceScript: store.advanceScript,
       requestCoachStep: store.requestCoachStep,
       confirmNextAction: store.confirmNextAction,

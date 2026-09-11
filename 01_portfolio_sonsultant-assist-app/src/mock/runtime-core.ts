@@ -88,6 +88,7 @@ export function createMockStore(
   }
 
   const listeners = new Set<() => void>();
+  let openingTurnStarted = false;
   const scriptEngine = createScriptEngine({
     shouldFail: () => isScriptFailureVariant(state.screenVariant["SCR-004"]),
   });
@@ -213,7 +214,35 @@ export function createMockStore(
         coachStep: "dialogue",
       });
       scriptEngine.reset(session.id);
+      openingTurnStarted = false;
       return { ok: true, value: session.id };
+    },
+    appendUserMessage(text: string) {
+      if (!state.session) {
+        return fail(SCRIPT_FAILED_ERROR);
+      }
+      const trimmed = text.trim();
+      if (trimmed.length === 0) {
+        return succeed();
+      }
+      const last = state.messages[state.messages.length - 1];
+      if (last?.speaker === "user" && last.text === trimmed) {
+        return succeed();
+      }
+      const messages = [...state.messages, { speaker: "user" as const, text: trimmed }];
+      setState({
+        ...state,
+        messages,
+        session: { ...state.session, messages },
+      });
+      return succeed();
+    },
+    beginOpeningTurn() {
+      if (state.messages.length > 0 || openingTurnStarted) {
+        return false;
+      }
+      openingTurnStarted = true;
+      return true;
     },
     advanceScript() {
       if (!state.session) {

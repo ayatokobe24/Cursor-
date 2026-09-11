@@ -120,6 +120,26 @@ describe("MockRuntime (Requirement 1.2, 1.4, 1.5)", () => {
     assert.equal(second.ok, false);
   });
 
+  test("appendUserMessage stores a right-side user bubble on the current session", async () => {
+    const { createMockStore } = await loadCore();
+    const store = createMockStore();
+
+    const missing = store.appendUserMessage("まだセッションがない");
+    assert.equal(missing.ok, false);
+
+    store.startConsult("うまくまとめなくて大丈夫");
+    const empty = store.appendUserMessage("   ");
+    assert.equal(empty.ok, true);
+    assert.equal(store.state.messages.length, 0);
+
+    const result = store.appendUserMessage("いま一番つらいのは期限です");
+    assert.equal(result.ok, true);
+    assert.equal(store.state.messages.length, 1);
+    assert.equal(store.state.messages[0]?.speaker, "user");
+    assert.equal(store.state.messages[0]?.text, "いま一番つらいのは期限です");
+    assert.equal(store.state.session?.messages.length, 1);
+  });
+
   test("advanceScript appends the next ScriptEngine turn after consult start", async () => {
     const { createMockStore } = await loadCore();
     const store = createMockStore();

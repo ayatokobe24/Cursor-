@@ -145,14 +145,13 @@ describe("ConsultStartScreen (Requirement 2.4, 4.6, 4.7, 4.8, 4.9)", () => {
     assert.match(source, /copy\.consult\.maskingNotice/);
   });
 
-  test("session placeholder exists as a navigation target without coaching UI", () => {
+  test("session page remains a navigation target assembled from CoachingScreen", () => {
     assert.equal(existsSync(sessionPagePath), true);
     const source = readFileSync(sessionPagePath, "utf8");
-    assert.match(source, /対話は次のタスク/);
+    assert.match(source, /CoachingScreen/);
     assert.match(source, /AppShell/);
     assert.match(source, /kind=["']standard["']/);
-    assert.doesNotMatch(source, /ChatBubble/);
-    assert.doesNotMatch(source, /Composer/);
+    assert.doesNotMatch(source, /対話は次のタスク/);
     assert.doesNotMatch(source, /SCR-\d+/);
     assert.doesNotMatch(source, /5W3H/);
   });

@@ -208,6 +208,32 @@
   height: var(--icon-size-sm);
 }
 
+.chatBubble {
+  max-width: 78%;
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  word-break: break-word;
+}
+
+.chatBubbleAi {
+  background-color: var(--color-surface-glass);
+  background-image: var(--gradient-surface);
+  border: var(--border-width-default) solid var(--color-border);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) var(--radius-sm);
+  box-shadow: var(--shadow-inset-highlight);
+  backdrop-filter: blur(var(--blur-glass));
+}
+
+.chatBubbleUser {
+  background-color: var(--color-bluegray-bg);
+  border: var(--border-width-default) solid var(--color-border-highlight);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-sm) var(--radius-lg);
+  color: var(--color-bluegray-text);
+}
+
 .inlineMessage {
   display: flex;
   flex-wrap: wrap;

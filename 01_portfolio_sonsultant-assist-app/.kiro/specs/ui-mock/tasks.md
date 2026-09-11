@@ -63,7 +63,7 @@
   - ネットワーク先の生成AIに接続する経路がない
   - _Requirements: 1.1, 1.2, 5.4, 5.5_
 
-- [ ] 3.2 一つの対話画面で左右の吹き出しと下部入力を固定表示する
+- [x] 3.2 一つの対話画面で左右の吹き出しと下部入力を固定表示する
   - AI 左・利用者右。1吹き出し1問。入力は下部固定
   - 送信は sage 円で、画面のベージュ主操作とは別物
   - 直近の問いと入力欄が常に見える
@@ -204,9 +204,12 @@
 - Primary は `--control-height-lg` / `--radius-md` / `--color-cta`。Composer Send は sage 円
 - コア Sidebar は3項目のみ。進行中・振り返りの実 href は 5.4 まで `/consult/new`
 - Stepper は `kind=standard` のみ。未来ステップは `applyStepSelection` で無視
-- `advanceScript` は ScriptEngine（3.1）まで常に SCRIPT_FAILED
+- `advanceScript` は ScriptEngine を呼ぶ。失敗 Variant は SCR-004
 - ログイン失敗のデモは空パスワード。AUTH_FAILED 文言が copy.ts と runtime-core.ts に重複している
 - 同意見出しは Noto Sans JP。Noto Serif JP は SCR-001 のサービス名のみ
-- startConsult 失敗は LOAD_FAILED。004 はプレースホルダまで（対話 UI は 3.2）
+- startConsult 失敗は LOAD_FAILED。対話 UI は CoachingScreen（3.2）
 - ScriptEngine は MockRuntime が単一所有。useAdvanceScript は createScriptEngine しない。node テスト用に `.ts` 拡張子 import と allowImportingTsExtensions がある
+- ChatBubble は max-width 78%、AI 左 / 利用者右。Composer は下部ドック。送信は sage 円のみ（ベージュ Primary は置かない）
+- 利用者吹き出しは `appendUserMessage`。初回の問いは `beginOpeningTurn` で二重起動を防ぐ。Provider の store はマウント時に一度だけ作るので、メソッド追加後はフルリロードが必要
+- セッションなしで `/consult/[sessionId]` を開くと SCRIPT_FAILED。相談開始から入る
 

@@ -47,6 +47,8 @@ export const copy = {
     thinking: "考えています",
     scriptFailed:
       "もう一度聞いてみますか。いまの入力はそのまま残しています。",
+    composerLabel: "いまの答え",
+    composerPlaceholder: "いま頭にあることを書いてください",
   },
 } as const;
 

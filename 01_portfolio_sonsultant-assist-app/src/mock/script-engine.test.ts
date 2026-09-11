@@ -11,7 +11,7 @@ const enginePath = path.join(dir, "script-engine.ts");
 const scriptsPath = path.join(dir, "scripts.ts");
 const typesPath = path.join(dir, "types.ts");
 const hookPath = path.join(dir, "use-advance-script.ts");
-const statusPath = path.join(dir, "..", "screens", "coaching-script-status.tsx");
+const coachingScreenPath = path.join(dir, "..", "screens", "coaching-screen.tsx");
 const sessionPagePath = path.join(
   dir,
   "..",
@@ -228,21 +228,18 @@ describe("ScriptEngine (Requirement 1.1, 1.2, 5.4, 5.5)", () => {
     assert.doesNotMatch(source, /ChatBubble/);
   });
 
-  test("placeholder coaching status can show 考えています without a chat layout", () => {
-    assert.equal(existsSync(statusPath), true);
-    const source = readFileSync(statusPath, "utf8");
+  test("coaching screen can show 考えています after the script delay", () => {
+    assert.equal(existsSync(coachingScreenPath), true);
+    const source = readFileSync(coachingScreenPath, "utf8");
     assert.match(source, /useAdvanceScript/);
     assert.match(source, /copy\.coaching\.thinking/);
     assert.match(source, /isThinking/);
-    assert.doesNotMatch(source, /ChatBubble/);
-    assert.doesNotMatch(source, /Composer/);
     assert.doesNotMatch(source, NETWORK_PATTERN);
 
     const pageSource = readFileSync(sessionPagePath, "utf8");
-    assert.match(pageSource, /対話は次のタスク/);
-    assert.match(pageSource, /CoachingScriptStatus/);
-    assert.doesNotMatch(pageSource, /ChatBubble/);
-    assert.doesNotMatch(pageSource, /Composer/);
+    assert.match(pageSource, /CoachingScreen/);
+    assert.doesNotMatch(pageSource, /対話は次のタスク/);
+    assert.doesNotMatch(pageSource, /CoachingScriptStatus/);
   });
 });
 

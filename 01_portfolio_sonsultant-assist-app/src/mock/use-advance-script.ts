@@ -13,9 +13,11 @@ export function useAdvanceScript() {
 
   const advance = useCallback(async (): Promise<Result<void, MockError>> => {
     setError(null);
+    const keptDraft = draft;
+    setDraft("");
     const { result, draft: nextDraft } = await advanceFromRuntime({
       advanceScript: () => runtime.advanceScript(),
-      draft,
+      draft: keptDraft,
       setThinking: setIsThinking,
     });
     setDraft(nextDraft);

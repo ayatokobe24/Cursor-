@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import {
+  ChatBubble,
   Composer,
   GlassCard,
   InlineMessage,
@@ -57,12 +58,24 @@ export function PrimitivesPreview() {
       </GlassCard>
 
       <GlassCard>
-        <Composer
-          value={draft}
-          onChange={setDraft}
-          onSend={() => setDraft("")}
-          placeholder="いまの状況を短く書いて送る"
-        />
+        <div className={styles.stack}>
+          <div className={styles.rowStart}>
+            <ChatBubble speaker="ai">
+              そのとき、具体的には何がありましたか。
+            </ChatBubble>
+          </div>
+          <div className={styles.rowEnd}>
+            <ChatBubble speaker="user">
+              期限が重なって、手が止まっています。
+            </ChatBubble>
+          </div>
+          <Composer
+            value={draft}
+            onChange={setDraft}
+            onSend={() => setDraft("")}
+            placeholder="いまの状況を短く書いて送る"
+          />
+        </div>
       </GlassCard>
     </main>
   );

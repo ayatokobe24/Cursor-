@@ -108,6 +108,8 @@ export type MockRuntime = {
   signIn(): Result<void, MockError>;
   completeConsent(): Result<void, MockError>;
   startConsult(body: string): Result<string, MockError>;
+  appendUserMessage(text: string): Result<void, MockError>;
+  beginOpeningTurn(): boolean;
   advanceScript(): Result<void, MockError>;
   requestCoachStep(step: CoachStep): Result<void, MockError>;
   confirmNextAction(): Result<void, MockError>;
