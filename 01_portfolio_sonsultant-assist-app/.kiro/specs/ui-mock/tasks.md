@@ -43,7 +43,7 @@
   - ログイン画面にシェルがなく、仮置き注記が見える
   - _Requirements: 1.3, 2.7, 4.1, 4.2, 4.3_
 
-- [ ] 2.2 必須3項目の同意画面を置き、未完了では先へ進めない
+- [x] 2.2 必須3項目の同意画面を置き、未完了では先へ進めない
   - 必須3項目が揃うまで「同意して進む」を押せない。理由を短く出す
   - 同意完了後は相談入力へ進む
   - 初回はヘッダーのみで、未チェック時に主操作が非活性である
@@ -206,4 +206,5 @@
 - Stepper は `kind=standard` のみ。未来ステップは `applyStepSelection` で無視
 - `advanceScript` は ScriptEngine（3.1）まで常に SCRIPT_FAILED
 - ログイン失敗のデモは空パスワード。AUTH_FAILED 文言が copy.ts と runtime-core.ts に重複している
+- 同意見出しは Noto Sans JP。Noto Serif JP は SCR-001 のサービス名のみ
 

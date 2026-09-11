@@ -39,6 +39,39 @@ describe("CopyCatalog SCR-001 (Requirement 1.3, 2.7)", () => {
   });
 });
 
+describe("CopyCatalog SCR-002 (Requirement 4.4, 4.5)", () => {
+  test("consent copy matches MOCK-DEC-01 SCR-002 exactly", async () => {
+    const { copy } = await loadCopy();
+    const consent = copy.consent;
+
+    assert.equal(consent.title, "相談を始める前に");
+    assert.equal(
+      consent.description,
+      "安心して話せるように、情報の扱いを確認します。",
+    );
+    assert.equal(
+      consent.items.thirdParty,
+      "所属企業から独立した第三者サービスであること",
+    );
+    assert.equal(
+      consent.items.noCompanyShare,
+      "相談内容を所属企業へ提供しないこと",
+    );
+    assert.equal(consent.items.noHrEval, "人事評価に使わないこと");
+    assert.equal(Object.keys(consent.items).length, 3);
+    assert.equal(
+      consent.publicNote,
+      "あなたが明示的に同意しない限り、相談内容は公開されません。",
+    );
+    assert.equal(consent.cta, "同意して進む");
+    assert.equal(
+      consent.disabledReason,
+      "必要な確認が終わるまで、次へは進めません。",
+    );
+    assert.equal("optional" in consent, false);
+  });
+});
+
 async function loadCopy(): Promise<typeof CopyCatalog> {
   return import(pathToFileURL(copyPath).href) as Promise<typeof CopyCatalog>;
 }

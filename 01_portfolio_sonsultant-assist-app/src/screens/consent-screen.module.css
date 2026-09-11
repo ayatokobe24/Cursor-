@@ -1,0 +1,79 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-sans), var(--font-family-base);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading);
+}
+
+.description,
+.publicNote,
+.disabledReason {
+  margin: 0;
+  line-height: var(--line-height-body);
+}
+
+.description {
+  color: var(--color-text-primary);
+}
+
+.publicNote {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.checkbox {
+  flex: 0 0 auto;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.2em;
+  accent-color: var(--color-cta);
+}
+
+.itemLabel {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+}
+
+.cta {
+  width: 100%;
+}
+
+.disabledReason {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
