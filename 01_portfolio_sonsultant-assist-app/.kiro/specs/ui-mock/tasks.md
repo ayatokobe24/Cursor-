@@ -37,7 +37,7 @@
   - _Requirements: 1.2, 1.4, 1.5_
 
 - [ ] 2. ログイン・同意・相談開始
-- [ ] 2.1 仮のログイン画面を置き、サービス名と第三者性の仮コピーを出す
+- [x] 2.1 仮のログイン画面を置き、サービス名と第三者性の仮コピーを出す
   - サービス名は「伴走」（仮）。メール＋パスワードはモック用仮置きと分かる注記を置く
   - 主操作は「ログイン」1つ。未同意なら同意へ、同意済みなら相談入力へ進む
   - ログイン画面にシェルがなく、仮置き注記が見える
@@ -198,3 +198,12 @@
   - 要件 3.7 と 6.9 / 11.1 の受け入れを、実装後でも再実行できるテストにする
   - コア実装が既に手動確認済みなら後回しにしてよい
   - _Requirements: 3.7, 6.9, 11.1_
+
+## Implementation Notes
+- トークンは `globals.css` から別紙6-4 CSS を `@import` する。複製しない
+- Primary は `--control-height-lg` / `--radius-md` / `--color-cta`。Composer Send は sage 円
+- コア Sidebar は3項目のみ。進行中・振り返りの実 href は 5.4 まで `/consult/new`
+- Stepper は `kind=standard` のみ。未来ステップは `applyStepSelection` で無視
+- `advanceScript` は ScriptEngine（3.1）まで常に SCRIPT_FAILED
+- ログイン失敗のデモは空パスワード。AUTH_FAILED 文言が copy.ts と runtime-core.ts に重複している
+

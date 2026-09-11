@@ -150,6 +150,15 @@ export function createMockStore(
       });
     },
     signIn() {
+      const loginVariant = state.screenVariant["SCR-001"];
+      if (loginVariant === "AUTH_FAILED" || loginVariant === "認証失敗") {
+        return fail({
+          code: "AUTH_FAILED",
+          message:
+            "ログインできませんでした。入力はそのまま残しています。もう一度試せます。",
+          retryable: true,
+        });
+      }
       setState({
         ...state,
         auth: { ...state.auth, signedIn: true },

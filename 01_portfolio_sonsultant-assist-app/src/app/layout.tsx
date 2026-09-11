@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import { MockRuntimeProvider } from "@/mock/runtime";
 import "./globals.css";
 
@@ -8,6 +8,14 @@ const notoSansJP = Noto_Sans_JP({
   weight: ["400", "500", "600"],
   display: "swap",
   variable: "--font-noto-sans-jp",
+  adjustFontFallback: false,
+});
+
+const notoSerifJP = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-noto-serif-jp",
   adjustFontFallback: false,
 });
 
@@ -20,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ja"
-      className={`${notoSansJP.variable} h-full antialiased`}
+      className={`${notoSansJP.variable} ${notoSerifJP.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <MockRuntimeProvider>{children}</MockRuntimeProvider>

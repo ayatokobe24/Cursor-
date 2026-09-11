@@ -3,6 +3,7 @@
 
 @theme inline {
   --font-sans: var(--font-noto-sans-jp), var(--font-family-base);
+  --font-serif: var(--font-noto-serif-jp), var(--font-family-display);
   --color-background: var(--color-bg);
   --color-foreground: var(--color-text-primary);
 }

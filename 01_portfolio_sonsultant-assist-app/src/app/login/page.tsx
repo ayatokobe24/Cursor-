@@ -1,25 +1,17 @@
 import type { Metadata } from "next";
-import Form from "next/form";
-import { PrimaryButton } from "@/ui/primitives";
-import { AppShell, PlaceholderPanel } from "@/ui/shell";
-import styles from "@/ui/shell/shell.module.css";
+import { LoginScreen } from "@/screens/login-screen";
+import { AppShell } from "@/ui/shell";
 
 export const metadata: Metadata = {
-  title: "ログイン（プレースホルダ）",
-  description: "シェルなし中央カラムの確認用プレースホルダ。製品コピーではありません。",
+  title: "ログイン｜伴走（仮）",
+  description:
+    "仕事のつまずきを、一人で抱えずに次の一歩まで整理するための、所属企業から独立した場です。",
 };
 
 export default function LoginPage() {
   return (
     <AppShell kind="none">
-      <PlaceholderPanel kicker="プレースホルダ" title="ログイン（プレースホルダ）">
-        <p className={styles.placeholderLead}>
-          ヘッダーもサイドバーもない、中央の単一カラムです。
-        </p>
-        <Form action="/consent">
-          <PrimaryButton type="submit">次へ（プレースホルダ）</PrimaryButton>
-        </Form>
-      </PlaceholderPanel>
+      <LoginScreen />
     </AppShell>
   );
 }

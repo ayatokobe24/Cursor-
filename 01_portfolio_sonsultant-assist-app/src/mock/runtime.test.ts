@@ -53,6 +53,40 @@ describe("MockRuntime (Requirement 1.2, 1.4, 1.5)", () => {
     assert.equal(store.state.auth.signedIn, false);
   });
 
+  test("signIn sets signedIn and keeps consented false", async () => {
+    const { createMockStore } = await loadCore();
+    const store = createMockStore();
+    const result = store.signIn();
+    assert.equal(result.ok, true);
+    assert.equal(store.state.auth.signedIn, true);
+    assert.equal(store.state.auth.consented, false);
+  });
+
+  test("signIn returns AUTH_FAILED for SCR-001 variant and stays unsigned", async () => {
+    const { createMockStore } = await loadCore();
+    const store = createMockStore();
+    store.setScreenVariant("SCR-001", "AUTH_FAILED");
+    const result = store.signIn();
+    assert.equal(result.ok, false);
+    if (!result.ok) {
+      assert.equal(result.error.code, "AUTH_FAILED");
+      assert.equal(result.error.retryable, true);
+    }
+    assert.equal(store.state.auth.signedIn, false);
+  });
+
+  test("signIn returns AUTH_FAILED for 認証失敗 variant", async () => {
+    const { createMockStore } = await loadCore();
+    const store = createMockStore();
+    store.setScreenVariant("SCR-001", "認証失敗");
+    const result = store.signIn();
+    assert.equal(result.ok, false);
+    if (!result.ok) {
+      assert.equal(result.error.code, "AUTH_FAILED");
+    }
+    assert.equal(store.state.auth.signedIn, false);
+  });
+
   test("advanceScript returns SCRIPT_FAILED until ScriptEngine exists", async () => {
     const { createMockStore } = await loadCore();
     const store = createMockStore();
