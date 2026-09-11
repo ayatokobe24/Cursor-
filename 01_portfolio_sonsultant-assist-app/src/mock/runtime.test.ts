@@ -4,6 +4,7 @@ import path from "node:path";
 import { describe, test } from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import type * as RuntimeCore from "./runtime-core";
+import type * as ScriptEngineModule from "./script-engine";
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const runtimePath = path.join(dir, "runtime.tsx");
@@ -119,15 +120,106 @@ describe("MockRuntime (Requirement 1.2, 1.4, 1.5)", () => {
     assert.equal(second.ok, false);
   });
 
-  test("advanceScript returns SCRIPT_FAILED until ScriptEngine exists", async () => {
+  test("advanceScript appends the next ScriptEngine turn after consult start", async () => {
     const { createMockStore } = await loadCore();
     const store = createMockStore();
+    store.startConsult("うまくまとめなくて大丈夫");
+    const result = store.advanceScript();
+    assert.equal(result.ok, true);
+    assert.equal(store.state.messages.length, 1);
+    assert.equal(store.state.messages[0]?.speaker, "ai");
+    assert.equal(
+      store.state.messages[0]?.text,
+      "そのとき、具体的には何がありましたか。",
+    );
+    assert.equal(store.state.session?.messages.length, 1);
+  });
+
+  test("two advances on the same store yield fixture turn 2, not turn 1 twice", async () => {
+    const { createMockStore } = await loadCore();
+    const { advanceFromRuntime } = await loadEngine();
+    const store = createMockStore();
+    store.startConsult("うまくまとめなくて大丈夫");
+
+    const first = await advanceFromRuntime({
+      advanceScript: () => store.advanceScript(),
+      draft: "1回目の入力",
+      setThinking: () => {},
+      wait: async () => {},
+    });
+    const second = await advanceFromRuntime({
+      advanceScript: () => store.advanceScript(),
+      draft: "2回目の入力",
+      setThinking: () => {},
+      wait: async () => {},
+    });
+
+    assert.equal(first.result.ok, true);
+    assert.equal(second.result.ok, true);
+    assert.equal(first.draft, "");
+    assert.equal(second.draft, "");
+    assert.equal(store.state.messages.length, 2);
+    assert.equal(
+      store.state.messages[0]?.text,
+      "そのとき、具体的には何がありましたか。",
+    );
+    assert.equal(
+      store.state.messages[1]?.text,
+      "いま、いちばん引っかかっているのはどこですか。",
+    );
+    assert.notEqual(
+      store.state.messages[1]?.text,
+      store.state.messages[0]?.text,
+    );
+  });
+
+  test("advanceScript returns retryable SCRIPT_FAILED for SCR-004 failure variants and keeps messages", async () => {
+    const { createMockStore } = await loadCore();
+    const store = createMockStore();
+    store.startConsult("残したい本文");
+    store.setScreenVariant("SCR-004", "処理失敗");
+    const before = store.state.messages.slice();
     const result = store.advanceScript();
     assert.equal(result.ok, false);
     if (!result.ok) {
       assert.equal(result.error.code, "SCRIPT_FAILED");
       assert.equal(result.error.retryable, true);
+      assert.match(result.error.message, /入力はそのまま残して/);
     }
+    assert.deepEqual(store.state.messages, before);
+
+    store.setScreenVariant("SCR-004", "SCRIPT_FAILED");
+    const second = store.advanceScript();
+    assert.equal(second.ok, false);
+    if (!second.ok) {
+      assert.equal(second.error.code, "SCRIPT_FAILED");
+    }
+    assert.deepEqual(store.state.messages, before);
+  });
+
+  test("failure variant: advanceFromRuntime returns SCRIPT_FAILED and draft is unchanged", async () => {
+    const { createMockStore } = await loadCore();
+    const { advanceFromRuntime } = await loadEngine();
+    const store = createMockStore();
+    store.startConsult("残したい本文");
+    store.setScreenVariant("SCR-004", "SCRIPT_FAILED");
+    const draft = "消えてはいけない入力";
+    const before = store.state.messages.slice();
+
+    const { result, draft: nextDraft } = await advanceFromRuntime({
+      advanceScript: () => store.advanceScript(),
+      draft,
+      setThinking: () => {},
+      wait: async () => {},
+    });
+
+    assert.equal(result.ok, false);
+    if (!result.ok) {
+      assert.equal(result.error.code, "SCRIPT_FAILED");
+      assert.equal(result.error.retryable, true);
+    }
+    assert.equal(nextDraft, draft);
+    assert.deepEqual(store.state.messages, before);
   });
 
   test("requestCoachStep rejects a future step", async () => {
@@ -158,6 +250,12 @@ describe("MockRuntime (Requirement 1.2, 1.4, 1.5)", () => {
 
 async function loadCore(): Promise<typeof RuntimeCore> {
   return import(pathToFileURL(corePath).href) as Promise<typeof RuntimeCore>;
+}
+
+async function loadEngine(): Promise<typeof ScriptEngineModule> {
+  return import(pathToFileURL(path.join(dir, "script-engine.ts")).href) as Promise<
+    typeof ScriptEngineModule
+  >;
 }
 
 function memoryStorage(): Storage {

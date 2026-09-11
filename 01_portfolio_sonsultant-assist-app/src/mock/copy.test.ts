@@ -101,6 +101,17 @@ describe("CopyCatalog SCR-003 (Requirement 2.4, 4.6)", () => {
   });
 });
 
+describe("CopyCatalog SCR-004 (Requirement 5.4, 5.5)", () => {
+  test("coaching copy matches MOCK-DEC-01 thinking and failure lines", async () => {
+    const { copy } = await loadCopy();
+    assert.equal(copy.coaching.thinking, "考えています");
+    assert.equal(
+      copy.coaching.scriptFailed,
+      "もう一度聞いてみますか。いまの入力はそのまま残しています。",
+    );
+  });
+});
+
 async function loadCopy(): Promise<typeof CopyCatalog> {
   return import(pathToFileURL(copyPath).href) as Promise<typeof CopyCatalog>;
 }

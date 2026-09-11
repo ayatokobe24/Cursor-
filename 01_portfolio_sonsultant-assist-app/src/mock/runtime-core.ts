@@ -10,6 +10,11 @@ import type {
   ScenarioId,
   ScrId,
 } from "./types";
+import {
+  createScriptEngine,
+  isScriptFailureVariant,
+  SCRIPT_FAILED_ERROR,
+} from "./script-engine.ts";
 
 export const MOCK_SNAPSHOT_KEY = "banso-mock-runtime-snapshot";
 
@@ -83,6 +88,9 @@ export function createMockStore(
   }
 
   const listeners = new Set<() => void>();
+  const scriptEngine = createScriptEngine({
+    shouldFail: () => isScriptFailureVariant(state.screenVariant["SCR-004"]),
+  });
 
   const emit = (): void => {
     for (const listener of listeners) {
@@ -204,14 +212,31 @@ export function createMockStore(
         messages: [],
         coachStep: "dialogue",
       });
+      scriptEngine.reset(session.id);
       return { ok: true, value: session.id };
     },
     advanceScript() {
-      return fail({
-        code: "SCRIPT_FAILED",
-        message: "台本の進行はまだ使えません。",
-        retryable: true,
+      if (!state.session) {
+        return fail(SCRIPT_FAILED_ERROR);
+      }
+      const result = scriptEngine.nextTurn({
+        sessionId: state.session.id,
+        coachStep: state.coachStep,
       });
+      if (!result.ok) {
+        return result;
+      }
+      const message = {
+        speaker: result.value.speaker,
+        text: result.value.text,
+      };
+      const messages = [...state.messages, message];
+      setState({
+        ...state,
+        messages,
+        session: { ...state.session, messages },
+      });
+      return succeed();
     },
     requestCoachStep(step: CoachStep) {
       if (isFutureStep(state.coachStep, step)) {

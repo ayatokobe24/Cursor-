@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CoachingScriptStatus } from "@/screens/coaching-script-status";
 import { AppShell } from "@/ui/shell";
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export default async function ConsultSessionPage({
   return (
     <AppShell kind="standard" currentStep="consult">
       <p>対話は次のタスク</p>
+      <CoachingScriptStatus />
     </AppShell>
   );
 }

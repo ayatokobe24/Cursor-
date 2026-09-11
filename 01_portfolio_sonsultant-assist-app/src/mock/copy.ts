@@ -43,6 +43,11 @@ export const copy = {
     startFailed:
       "相談を始められませんでした。入力はそのまま残しています。もう一度試せます。",
   },
+  coaching: {
+    thinking: "考えています",
+    scriptFailed:
+      "もう一度聞いてみますか。いまの入力はそのまま残しています。",
+  },
 } as const;
 
 export type CopyCatalog = typeof copy;

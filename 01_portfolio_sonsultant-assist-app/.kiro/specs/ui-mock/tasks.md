@@ -57,7 +57,7 @@
   - _Requirements: 2.4, 4.6, 4.7, 4.8, 4.9_
 
 - [ ] 3. コーチング対話のコンテナと台本
-- [ ] 3.1 あらかじめ書いた台本で次の問いを返し、外部の生成AIは呼ばない
+- [x] 3.1 あらかじめ書いた台本で次の問いを返し、外部の生成AIは呼ばない
   - 次ターン取得に短い待ちを入れ、「考えています」を出せる
   - 失敗時は再試行可能なエラーを返し、入力は消さない
   - ネットワーク先の生成AIに接続する経路がない
@@ -208,4 +208,5 @@
 - ログイン失敗のデモは空パスワード。AUTH_FAILED 文言が copy.ts と runtime-core.ts に重複している
 - 同意見出しは Noto Sans JP。Noto Serif JP は SCR-001 のサービス名のみ
 - startConsult 失敗は LOAD_FAILED。004 はプレースホルダまで（対話 UI は 3.2）
+- ScriptEngine は MockRuntime が単一所有。useAdvanceScript は createScriptEngine しない。node テスト用に `.ts` 拡張子 import と allowImportingTsExtensions がある
 

@@ -59,6 +59,20 @@ export type CoachMessage = {
   text: string;
 };
 
+export type ScriptTurn = {
+  speaker: "ai" | "user";
+  text: string;
+  delayMs: number;
+};
+
+export type ScriptEngine = {
+  nextTurn(input: {
+    sessionId: string;
+    coachStep: CoachStep;
+    userText?: string;
+  }): Result<ScriptTurn, MockError>;
+};
+
 export type MockSession = {
   id: string;
   consultBody: string;
