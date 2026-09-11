@@ -8,4 +8,14 @@ export type { CoreNavItem, CoreNavItemId } from "./nav-items";
 export { PlaceholderPanel } from "./placeholder-panel";
 export type { PlaceholderPanelProps } from "./placeholder-panel";
 export { Sidebar } from "./sidebar";
+export { Stepper } from "./stepper";
+export type { StepperProps } from "./stepper";
+export {
+  applyStepSelection,
+  resolveDemoStep,
+  STEPPER_LABELS,
+  STEPPER_STEPS,
+  shouldShowStepper,
+} from "./stepper-model";
+export type { StepperStatus, StepperStepId } from "./stepper-model";
 export type { AppShellProps, ShellKind } from "./types";
