@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ConsentPage() {
   return (
     <AppShell kind="header-only">
-      <PlaceholderPanel kicker="SCR-002 初回相当" title="同意（プレースホルダ）">
+      <PlaceholderPanel kicker="プレースホルダ" title="同意（プレースホルダ）">
         <p className={styles.placeholderLead}>
           ヘッダーだけを出し、サイドバーは出していません。
         </p>

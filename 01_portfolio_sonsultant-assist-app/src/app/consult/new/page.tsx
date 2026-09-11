@@ -16,7 +16,7 @@ export default async function ConsultNewPage({
 
   return (
     <AppShell kind="standard" currentStep={currentStep}>
-      <PlaceholderPanel kicker="SCR-003 相当" title="新しい相談（プレースホルダ）">
+      <PlaceholderPanel kicker="プレースホルダ" title="新しい相談（プレースホルダ）">
         <p className={styles.placeholderLead}>
           ヘッダーとサイドバーと本文領域です。ナビは「新しい相談」「進行中の相談」「振り返り」だけです。
         </p>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <AppShell kind="none">
-      <PlaceholderPanel kicker="SCR-001 相当" title="ログイン（プレースホルダ）">
+      <PlaceholderPanel kicker="プレースホルダ" title="ログイン（プレースホルダ）">
         <p className={styles.placeholderLead}>
           ヘッダーもサイドバーもない、中央の単一カラムです。
         </p>

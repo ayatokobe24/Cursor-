@@ -1,3 +1,5 @@
-export default function Home() {
-  return <main className="min-h-full flex-1" />;
+import { redirect } from "next/navigation";
+
+export default function Page() {
+  redirect("/login");
 }
