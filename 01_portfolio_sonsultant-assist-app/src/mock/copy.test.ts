@@ -72,6 +72,35 @@ describe("CopyCatalog SCR-002 (Requirement 4.4, 4.5)", () => {
   });
 });
 
+describe("CopyCatalog SCR-003 (Requirement 2.4, 4.6)", () => {
+  test("consult copy matches MOCK-DEC-01 SCR-003 exactly", async () => {
+    const { copy } = await loadCopy();
+    const consult = copy.consult;
+
+    assert.equal(consult.title, "いま困っていることを書く");
+    assert.equal(
+      consult.reassurance,
+      "うまくまとめなくて大丈夫です。いま頭にあることを、そのまま書いてください。",
+    );
+    assert.equal(
+      consult.hint,
+      "何があったか、何が一番つらいかを、そのまま書いてください。",
+    );
+    assert.equal(
+      consult.confidentiality,
+      "顧客名、案件名、人名は、書かなくて構いません。書かれた場合は、必要なら伏せて扱います。",
+    );
+    assert.equal(
+      consult.maskingNotice,
+      "伏せた方がよさそうな箇所があります。内容を確認してから進めます。",
+    );
+    assert.equal(consult.cta, "相談を始める");
+    assert.match(consult.startFailed, /入力はそのまま残して/);
+    assert.doesNotMatch(consult.title, /5W3H/);
+    assert.doesNotMatch(consult.hint, /Who|What|When|Where|Why|How/);
+  });
+});
+
 async function loadCopy(): Promise<typeof CopyCatalog> {
   return import(pathToFileURL(copyPath).href) as Promise<typeof CopyCatalog>;
 }

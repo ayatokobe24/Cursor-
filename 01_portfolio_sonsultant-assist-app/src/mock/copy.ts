@@ -29,6 +29,20 @@ export const copy = {
     cta: "同意して進む",
     disabledReason: "必要な確認が終わるまで、次へは進めません。",
   },
+  consult: {
+    title: "いま困っていることを書く",
+    reassurance:
+      "うまくまとめなくて大丈夫です。いま頭にあることを、そのまま書いてください。",
+    hint: "何があったか、何が一番つらいかを、そのまま書いてください。",
+    confidentiality:
+      "顧客名、案件名、人名は、書かなくて構いません。書かれた場合は、必要なら伏せて扱います。",
+    maskingNotice:
+      "伏せた方がよさそうな箇所があります。内容を確認してから進めます。",
+    maskingAck: "内容を確認しました",
+    cta: "相談を始める",
+    startFailed:
+      "相談を始められませんでした。入力はそのまま残しています。もう一度試せます。",
+  },
 } as const;
 
 export type CopyCatalog = typeof copy;

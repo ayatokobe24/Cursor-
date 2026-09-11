@@ -173,6 +173,22 @@ export function createMockStore(
       return succeed();
     },
     startConsult(body: string) {
+      const consultVariant = state.screenVariant["SCR-003"];
+      if (
+        consultVariant === "START_FAILED" ||
+        consultVariant === "失敗" ||
+        consultVariant === "失敗（入力保持）"
+      ) {
+        return {
+          ok: false as const,
+          error: {
+            code: "LOAD_FAILED" as const,
+            message:
+              "相談を始められませんでした。入力はそのまま残しています。もう一度試せます。",
+            retryable: true,
+          },
+        };
+      }
       const session: MockSession = {
         id: "session-1",
         consultBody: body,

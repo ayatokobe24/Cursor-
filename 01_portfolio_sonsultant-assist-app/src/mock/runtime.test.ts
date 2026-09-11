@@ -87,6 +87,38 @@ describe("MockRuntime (Requirement 1.2, 1.4, 1.5)", () => {
     assert.equal(store.state.auth.signedIn, false);
   });
 
+  test("startConsult stores the body and returns a session id", async () => {
+    const { createMockStore } = await loadCore();
+    const store = createMockStore();
+    const result = store.startConsult("うまくまとめなくて大丈夫");
+    assert.equal(result.ok, true);
+    if (result.ok) {
+      assert.equal(typeof result.value, "string");
+      assert.equal(result.value.length > 0, true);
+    }
+    assert.equal(store.state.session?.consultBody, "うまくまとめなくて大丈夫");
+    assert.equal(store.state.session?.status, "consulting");
+    assert.equal(store.state.coachStep, "dialogue");
+  });
+
+  test("startConsult returns LOAD_FAILED for SCR-003 failure variants and keeps no new session", async () => {
+    const { createMockStore } = await loadCore();
+    const store = createMockStore();
+    store.setScreenVariant("SCR-003", "失敗（入力保持）");
+    const result = store.startConsult("残したい本文");
+    assert.equal(result.ok, false);
+    if (!result.ok) {
+      assert.equal(result.error.code, "LOAD_FAILED");
+      assert.equal(result.error.retryable, true);
+      assert.match(result.error.message, /入力はそのまま残して/);
+    }
+    assert.equal(store.state.session, null);
+
+    store.setScreenVariant("SCR-003", "START_FAILED");
+    const second = store.startConsult("残したい本文");
+    assert.equal(second.ok, false);
+  });
+
   test("advanceScript returns SCRIPT_FAILED until ScriptEngine exists", async () => {
     const { createMockStore } = await loadCore();
     const store = createMockStore();

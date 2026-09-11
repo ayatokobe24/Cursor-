@@ -49,7 +49,7 @@
   - 初回はヘッダーのみで、未チェック時に主操作が非活性である
   - _Requirements: 3.2, 4.4, 4.5_
 
-- [ ] 2.3 自由記述の相談入力から対話を開始できるようにする
+- [x] 2.3 自由記述の相談入力から対話を開始できるようにする
   - 構造化フォームや 5W3H ラベルは出さない。MOCK-DEC-01 の仮コピーを使う
   - 開始成功でコーチング対話へ進む。失敗時は入力が残る（失敗の見た目は Wave 6 で完成してよい）
   - 機密候補 Variant 用の伏せ確認枠を置ける構造にする
@@ -207,4 +207,5 @@
 - `advanceScript` は ScriptEngine（3.1）まで常に SCRIPT_FAILED
 - ログイン失敗のデモは空パスワード。AUTH_FAILED 文言が copy.ts と runtime-core.ts に重複している
 - 同意見出しは Noto Sans JP。Noto Serif JP は SCR-001 のサービス名のみ
+- startConsult 失敗は LOAD_FAILED。004 はプレースホルダまで（対話 UI は 3.2）
 
